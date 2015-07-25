@@ -1,3 +1,4 @@
+THEOS_DEVICE_IP = localhost -p 2222
 ARCHS = armv7 arm64
 TARGET = iphone:latest:8.0
 

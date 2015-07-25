@@ -56,6 +56,17 @@ NSString *_artistForAppleMusicItem;
 
 %group AppleMusic
 
+	%hook MusicNowPlayingLyricsViewController
+
+	-(id)textView {
+		id origResult = %orig;
+		UITextView *lyricsView = origResult;
+		lyricsView.selectable = YES;
+		return lyricsView;
+	}
+
+	%end
+
 	%hook MusicNowPlayingItemViewController
 
 	-(id)item {
