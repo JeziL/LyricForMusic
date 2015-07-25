@@ -1,0 +1,14 @@
+{
+	Filter = {
+		Mode = Any;
+		Classes = (
+			"MPUNowPlayingViewController",
+			MPULyricsView,
+			"MPUNowPlayingTitlesView",
+		);
+		Bundles = (
+			"com.apple.Music",
+			"com.apple.MusicUIService",
+		);
+	};
+}

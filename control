@@ -1,0 +1,9 @@
+Package: com.ezi.lyricformusic
+Name: lyricformusic
+Depends: mobilesubstrate
+Version: 0.0.2
+Architecture: iphoneos-arm
+Description: Fetch lyrics automatically in Music.app!
+Maintainer: EZI
+Author: EZI
+Section: Tweaks
