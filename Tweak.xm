@@ -62,6 +62,7 @@ NSString *_artistForAppleMusicItem;
 		id origResult = %orig;
 		UITextView *lyricsView = origResult;
 		lyricsView.selectable = YES;
+		[lyricsView setFont:[%c(UIFont) systemFontOfSize:17]];
 		return lyricsView;
 	}
 
