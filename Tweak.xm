@@ -84,8 +84,8 @@ NSString *_artistForAppleMusicItem;
 	-(id)textView {
 		id origResult = %orig;
 		UITextView *lyricsView = origResult;
-		lyricsView.selectable = YES;
-		[lyricsView setFont:[%c(UIFont) systemFontOfSize:17]];
+		lyricsView.selectable = _copyable;
+		[lyricsView setFont:[%c(UIFont) systemFontOfSize:_textSize]];
 		return lyricsView;
 	}
 
@@ -145,6 +145,8 @@ NSString *_artistForAppleMusicItem;
 
 %ctor {
 	loadPrefs();
-	%init(LocalMusic);
-	%init(AppleMusic);
+	if (_enabled) {
+		%init(LocalMusic);
+		%init(AppleMusic);
+	}
 }
