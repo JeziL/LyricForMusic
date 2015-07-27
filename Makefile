@@ -13,4 +13,5 @@ lyricformusic_LDFLAGS = -lxml2 -lz
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-install::
+	install.exec "su mobile -c uicache"
 	install.exec "killall -9 SpringBoard"

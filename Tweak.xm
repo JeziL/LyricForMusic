@@ -4,6 +4,29 @@
 #import "MetroLyrics.h"
 #import "MPAVItem.h"
 
+BOOL _enabled;
+BOOL _copyable;
+float _textSize;
+
+void loadPrefs() {
+    NSString *path = [[NSString alloc]initWithFormat:@"/var/mobile/Library/Preferences/com.ezi.lyricformusic.plist"];
+    if ([[NSFileManager defaultManager]fileExistsAtPath:path]) {
+        NSData *data = [[NSData alloc]initWithContentsOfFile:path];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+        _enabled = [unarchiver decodeBoolForKey:@"Enabled"];
+        _copyable = [unarchiver decodeBoolForKey:@"Copyable"];
+        _textSize = [unarchiver decodeFloatForKey:@"TextSize"];
+        NSLog(@"EZI: READ(%d, %d, %f)", _enabled, _copyable, _textSize);
+        [unarchiver finishDecoding];
+    }
+    else {
+        NSLog(@"EZI: NOT READ");
+        _enabled = YES;
+        _copyable = YES;
+        _textSize = 17.0;
+    }
+}
+
 BOOL isStringHaveChineseCharacters(NSString *str) {
     for(int i=0; i< [str length];i++){
         int a = [str characterAtIndex:i];
@@ -121,6 +144,7 @@ NSString *_artistForAppleMusicItem;
 %end
 
 %ctor {
+	loadPrefs();
 	%init(LocalMusic);
 	%init(AppleMusic);
 }
