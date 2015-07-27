@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A216g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="AppleSDGothicNeo.ttc">
+            <string>AppleSDGothicNeo-Thin</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="q14-5B-nx6">
+                                <rect key="frame" x="130" y="247" width="116" height="116"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="q14-5B-nx6" secondAttribute="height" multiplier="1:1" id="Qoc-ij-Ozu"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LyricForMusic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUt-fs-j1V">
+                                <rect key="frame" x="104" y="372" width="166" height="48"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aUt-fs-j1V" secondAttribute="height" multiplier="83:24" id="lIk-7d-LMl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GoE-p1-Zag">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
+                                <animations/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="GoE-p1-Zag" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="1Tn-Lb-SAK"/>
+                            <constraint firstItem="aUt-fs-j1V" firstAttribute="top" secondItem="q14-5B-nx6" secondAttribute="bottom" constant="9" id="1vu-v5-lQH"/>
+                            <constraint firstItem="q14-5B-nx6" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.1739" id="4E3-YC-VeO"/>
+                            <constraint firstItem="q14-5B-nx6" firstAttribute="top" secondItem="GoE-p1-Zag" secondAttribute="bottom" id="QSP-tY-UF2"/>
+                            <constraint firstItem="GoE-p1-Zag" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="QkT-BB-IGf"/>
+                            <constraint firstItem="GoE-p1-Zag" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="U0G-0O-eh9"/>
+                            <constraint firstItem="aUt-fs-j1V" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="X5n-08-wFV"/>
+                            <constraint firstItem="GoE-p1-Zag" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.3703" id="hP7-Gj-iMk"/>
+                            <constraint firstItem="q14-5B-nx6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hqE-lK-5Ga"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4.5" y="392.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launchIcon" width="180" height="180"/>
+    </resources>
+</document>
