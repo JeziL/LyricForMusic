@@ -15,3 +15,5 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 after-install::
 	install.exec "su mobile -c uicache"
 	install.exec "killall -9 SpringBoard"
+SUBPROJECTS += lyricformusicpb
+include $(THEOS_MAKE_PATH)/aggregate.mk

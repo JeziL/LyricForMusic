@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = LyricForMusicPB;
+	cell = PSLinkCell;
+	detail = LyricForMusicPBListController;
+	icon = LyricForMusicPB.png;
+	isController = 1;
+	label = LyricForMusicPB;
+    };
+}
