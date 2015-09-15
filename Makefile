@@ -1,4 +1,4 @@
-THEOS_DEVICE_IP = localhost -p 2222
+THEOS_DEVICE_IP = 192.168.2.3
 ARCHS = armv7 arm64
 TARGET = iphone:latest:8.0
 
@@ -13,7 +13,6 @@ lyricformusic_LDFLAGS = -lxml2 -lz
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-install::
-	install.exec "su mobile -c uicache"
 	install.exec "killall -9 SpringBoard"
 SUBPROJECTS += lyricformusicpb
 include $(THEOS_MAKE_PATH)/aggregate.mk

@@ -1,10 +1,14 @@
+ARCHS = arm64 armv7
+TARGET = iphone:8.1:8.0
+
 include theos/makefiles/common.mk
 
 BUNDLE_NAME = LyricForMusicPB
 LyricForMusicPB_FILES = LyricForMusicPB.mm
 LyricForMusicPB_INSTALL_PATH = /Library/PreferenceBundles
-LyricForMusicPB_FRAMEWORKS = UIKit
-LyricForMusicPB_PRIVATE_FRAMEWORKS = Preferences
+PreferenceTestPB_FRAMEWORKS = UIKit CoreGraphics Foundation
+PreferenceTestPB_PRIVATE_FRAMEWORKS = Preferences
+PreferenceTestPB_LDFLAGS = -lz -lsqlite3.0
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 
