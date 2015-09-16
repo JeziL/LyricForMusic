@@ -86,7 +86,7 @@ NSString *_artistForAppleMusicItem;
 
 	%hook MusicNowPlayingLyricsViewController
 
-	-(id)textView {												//4st call.
+	-(id)textView {
 		//NSLog(@"EZI: textView called.");
 		id origResult = %orig;
 		UITextView *lyricsView = origResult;
@@ -99,7 +99,7 @@ NSString *_artistForAppleMusicItem;
 
 	%hook MusicNowPlayingItemViewController
 
-	-(id)item {                                                //1st call.
+	-(id)item {
 		id origResult = %orig;
 		MPAVItem *avItem = origResult;
 		_titleForAppleMusicItem = [avItem mainTitle];
@@ -112,12 +112,12 @@ NSString *_artistForAppleMusicItem;
 
 	%hook MPAVItem
 
-	-(BOOL)hasDisplayableText {									//2nd call.
+	-(BOOL)hasDisplayableText {
 		//NSLog(@"EZI: hasDisplayableText called.");
 		return true;
 	}
 
-	-(NSString *)lyrics {										//3rd call.
+	-(NSString *)lyrics {
 		return fetchLyricsByTitleAndArtist(_titleForAppleMusicItem, _artistForAppleMusicItem);
 	}
 
