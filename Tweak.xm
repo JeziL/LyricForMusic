@@ -3,8 +3,8 @@
 #import "Lyrster.h"
 #import "MetroLyrics.h"
 #import "MPAVItem.h"
-#import "UITextView.h"
-#import "UIFont.h"
+//#import "UITextView.h"
+//#import "UIFont.h"
 
 BOOL _enabled;
 BOOL _copyable;
