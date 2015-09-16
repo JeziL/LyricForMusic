@@ -6,9 +6,9 @@ include theos/makefiles/common.mk
 
 TWEAK_NAME = lyricformusic
 lyricformusic_FILES = Tweak.xm MetroLyrics.m Lyrster.m RequestSenderForQianQianLyrics.m RequestSenderForLyricWiki.m QianQianLyrics.m LyricWiki.m KeyValue_SearchLyrics.m
-lyricformusic_PRIVATE_FRAMEWORK = Celestial
-lyricformusic_FRAMEWORK = UIKit Foundation CoreFoundation MediaPlayer
-lyricformusic_LDFLAGS = -lz -lsqlite3.0
+lyricformusic_PRIVATE_FRAMEWORK = MediaPlayerUI FuseUI
+lyricformusic_FRAMEWORK = Celestial  AVFoundation UIKit CoreGraphics Foundation CoreFoundation MediaPlayer ApplicationServices CoreText
+lyricformusic_LDFLAGS = -lz -lsqlite3.0 -lxml2
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

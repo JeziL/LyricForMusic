@@ -3,8 +3,8 @@
 #import "Lyrster.h"
 #import "MetroLyrics.h"
 #import "MPAVItem.h"
-//#import "UITextView.h"
-//#import "UIFont.h"
+// #import "UITextView.h"
+// #import "UIFont.h"
 
 BOOL _enabled;
 BOOL _copyable;
@@ -33,32 +33,44 @@ BOOL isStringHaveChineseCharacters(NSString *str) {
 NSString *fetchLyricsByTitleAndArtist(NSString *title, NSString *artist) {
 	if (isStringHaveChineseCharacters(title) || isStringHaveChineseCharacters(artist)) {
 		NSString *lyric = [QianQianLyrics getLyricsByTitle:title getLyricsByArtist:artist];
-		if (![lyric isEqualToString:@""])
+		if (![lyric isEqualToString:@""]) {
+			NSLog(@"EZI: Fetch called. %@",lyric);
 			return lyric;
+		}
 		else {
 			lyric = [LyricWiki getLyricsByTitle:title getLyricsByArtist:artist];
-			if (![lyric isEqualToString:@"Not found"] && ![lyric isEqualToString:@""])
+			if (![lyric isEqualToString:@"Not found"] && ![lyric isEqualToString:@""]) {
+				NSLog(@"EZI: Fetch called. %@",lyric);
 				return lyric;
+			}
 			else {
 				lyric = [[NSString alloc] initWithFormat:@"%@\n%@\n[Not Found]", title, artist];
+				NSLog(@"EZI: Fetch called. %@",lyric);
 				return lyric;
 			}
 		}
 	}
 	else {
 		NSString *lyric = [Lyrster fetchLyricsByTitle:title andArtist:artist];
-		if (![lyric isEqualToString:@""])
+		if (![lyric isEqualToString:@""]) {
+			NSLog(@"EZI: Fetch called. %@",lyric);
 			return lyric;
+		}
 		else {
 			lyric = [MetroLyrics fetchLyricsByTitle:title andArtist:artist];
-			if (![lyric isEqualToString:@""])
+			if (![lyric isEqualToString:@""]) {
+				NSLog(@"EZI: Fetch called. %@",lyric);
 				return lyric;
+			}
 			else {
 				lyric = [LyricWiki getLyricsByTitle:title getLyricsByArtist:artist];
-				if (![lyric isEqualToString:@"Not found"] && ![lyric isEqualToString:@""])
+				if (![lyric isEqualToString:@"Not found"] && ![lyric isEqualToString:@""]) {
+					NSLog(@"EZI: Fetch called. %@",lyric);
 					return lyric;
+				}
 				else {
 					lyric = [[NSString alloc] initWithFormat:@"%@\n%@\n[Not Found]", title, artist];
+					NSLog(@"EZI: Fetch called. %@",lyric);
 					return lyric;
 				}
 			}
@@ -75,7 +87,8 @@ NSString *_artistForAppleMusicItem;
 
 	%hook MusicNowPlayingLyricsViewController
 
-	-(id)textView {
+	-(id)textView {												//4st call.
+		NSLog(@"EZI: textView called.");
 		id origResult = %orig;
 		UITextView *lyricsView = origResult;
 		lyricsView.selectable = _copyable;
@@ -87,11 +100,12 @@ NSString *_artistForAppleMusicItem;
 
 	%hook MusicNowPlayingItemViewController
 
-	-(id)item {
+	-(id)item {                                                //1st call.
 		id origResult = %orig;
 		MPAVItem *avItem = origResult;
 		_titleForAppleMusicItem = [avItem mainTitle];
 		_artistForAppleMusicItem = [avItem artist];
+		NSLog(@"EZI: item called. %@, %@.",_titleForAppleMusicItem, _artistForAppleMusicItem);
 		return origResult;
 	}
 
@@ -99,11 +113,12 @@ NSString *_artistForAppleMusicItem;
 
 	%hook MPAVItem
 
-	-(BOOL)hasDisplayableText {
+	-(BOOL)hasDisplayableText {									//2nd call.
+		NSLog(@"EZI: hasDisplayableText called.");
 		return true;
 	}
 
-	-(NSString *)lyrics {
+	-(NSString *)lyrics {										//3rd call.
 		return fetchLyricsByTitleAndArtist(_titleForAppleMusicItem, _artistForAppleMusicItem);
 	}
 
