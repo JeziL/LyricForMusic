@@ -1,8 +1,8 @@
-#import "QianQianLyrics.h"
-#import "LyricWiki.h"
-#import "Lyrster.h"
-#import "MetroLyrics.h"
-#import "MPAVItem.h"
+#import "Classes/QianQianLyrics.h"
+#import "Classes/LyricWiki.h"
+#import "Classes/Lyrster.h"
+#import "Classes/MetroLyrics.h"
+#import "Classes/MPAVItem.h"
 #import <UIKit/UIKit.h>
 
 BOOL _enabled;
