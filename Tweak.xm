@@ -33,18 +33,15 @@ NSString *fetchLyricsByTitleAndArtist(NSString *title, NSString *artist) {
 	if (isStringHaveChineseCharacters(title) || isStringHaveChineseCharacters(artist)) {
 		NSString *lyric = [QianQianLyrics getLyricsByTitle:title getLyricsByArtist:artist];
 		if (![lyric isEqualToString:@""]) {
-			// NSLog(@"EZI: Fetch called. %@",lyric);
 			return lyric;
 		}
 		else {
 			lyric = [LyricWiki getLyricsByTitle:title getLyricsByArtist:artist];
 			if (![lyric isEqualToString:@"Not found"] && ![lyric isEqualToString:@""]) {
-				//NSLog(@"EZI: Fetch called. %@",lyric);
 				return lyric;
 			}
 			else {
 				lyric = [[NSString alloc] initWithFormat:@"%@\n%@\n[Not Found]", title, artist];
-				//NSLog(@"EZI: Fetch called. %@",lyric);
 				return lyric;
 			}
 		}
@@ -52,24 +49,20 @@ NSString *fetchLyricsByTitleAndArtist(NSString *title, NSString *artist) {
 	else {
 		NSString *lyric = [Lyrster fetchLyricsByTitle:title andArtist:artist];
 		if (![lyric isEqualToString:@""]) {
-			//NSLog(@"EZI: Fetch called. %@",lyric);
-			return lyric;
+				return lyric;
 		}
 		else {
 			lyric = [MetroLyrics fetchLyricsByTitle:title andArtist:artist];
 			if (![lyric isEqualToString:@""]) {
-				//NSLog(@"EZI: Fetch called. %@",lyric);
 				return lyric;
 			}
 			else {
 				lyric = [LyricWiki getLyricsByTitle:title getLyricsByArtist:artist];
 				if (![lyric isEqualToString:@"Not found"] && ![lyric isEqualToString:@""]) {
-					//NSLog(@"EZI: Fetch called. %@",lyric);
 					return lyric;
 				}
 				else {
 					lyric = [[NSString alloc] initWithFormat:@"%@\n%@\n[Not Found]", title, artist];
-					//NSLog(@"EZI: Fetch called. %@",lyric);
 					return lyric;
 				}
 			}
@@ -87,7 +80,6 @@ NSString *_artistForAppleMusicItem;
 	%hook MusicNowPlayingLyricsViewController
 
 	-(id)textView {
-		//NSLog(@"EZI: textView called.");
 		id origResult = %orig;
 		UITextView *lyricsView = origResult;
 		lyricsView.selectable = _copyable;
@@ -104,7 +96,6 @@ NSString *_artistForAppleMusicItem;
 		MPAVItem *avItem = origResult;
 		_titleForAppleMusicItem = [avItem mainTitle];
 		_artistForAppleMusicItem = [avItem artist];
-		//NSLog(@"EZI: item called. %@, %@.",_titleForAppleMusicItem, _artistForAppleMusicItem);
 		return origResult;
 	}
 
@@ -113,7 +104,6 @@ NSString *_artistForAppleMusicItem;
 	%hook MPAVItem
 
 	-(BOOL)hasDisplayableText {
-		//NSLog(@"EZI: hasDisplayableText called.");
 		return true;
 	}
 
